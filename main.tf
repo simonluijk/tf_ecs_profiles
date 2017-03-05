@@ -1,10 +1,3 @@
-## ECS instance AMI profiles
-
-
-variable "ecs_instance_role_extra_policies" {
-  default = []
-}
-
 resource "aws_iam_role" "ecs_instance" {
   name = "ecsInstanceRole"
   assume_role_policy = <<EOF
@@ -49,17 +42,4 @@ resource "aws_iam_role" "ecs_service" {
     }]
 }
 EOF
-}
-
-# Output variables
-output "instance_profile" {
-    value = "${aws_iam_instance_profile.ecs_instance}"
-}
-
-output "instance_role" {
-    value = "${aws_iam_role.ecs_instance}"
-}
-
-output "service_role" {
-    value = "${aws_iam_role.ecs_service}"
 }
